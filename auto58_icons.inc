@@ -1,0 +1,10 @@
+#include "symbols58.h"
+static uint32_t auto58_hash(const uint32_t id[4]){char key[64];snprintf(key,sizeof(key),"%u_%u_%u_%u",id[0],id[1],id[2],id[3]);uint32_t h=2166136261u;for(const unsigned char*p=(const unsigned char*)key;*p;p++)h=(h^*p)*16777619u;return h;}
+/* Maximise WCAG luminance contrast: black or white is always legible on a flat fill. */
+static double auto58_channel(unsigned c){double s=c/255.;return s<=.04045?s/12.92:pow((s+.055)/1.055,2.4);}
+static unsigned auto58_ink(const unsigned char rgb[3]){double l=.2126*auto58_channel(rgb[0])+.7152*auto58_channel(rgb[1])+.0722*auto58_channel(rgb[2]);return (1.05/(l+.05)>=(l+.05)/.05)?255:0;}
+static void auto58_one(const uint32_t id[4]){if(!nonzero_id(id)||own_id(id)||icon52_find(id)>=0)return;size_t at=atomic_load(&icons52_count);if(at>=ICON52_LIMIT)return;unsigned char rgb[3];uint32_t slot;if(!get_alliance_color(id,rgb,&slot))return;unsigned symbol=auto58_hash(id)%SYMBOL58_COUNT,ink=auto58_ink(rgb);unsigned char*p=icons52[at].pixels;memset(p,0,ICON52_BYTES);
+ for(unsigned y=0;y<180;y++)for(unsigned x=0;x<180;x++){float d=fabsf(x-89.5f)+fabsf(y-89.5f);if(d>87)continue;size_t n=((size_t)y*180+x)*4;int border=d>83;p[n]=border?95:rgb[2];p[n+1]=border?110:rgb[1];p[n+2]=border?125:rgb[0];p[n+3]=255;}
+ for(unsigned s=symbol58_offsets[symbol];s<symbol58_offsets[symbol+1];s++){const unsigned char*q=symbol58_spans[s];for(unsigned x=q[1];x<q[1]+q[2];x++){size_t n=((size_t)q[0]*180+x)*4;if(!p[n+3])continue;for(unsigned c=0;c<3;c++)p[n+c]=(unsigned char)((p[n+c]*(255-q[3])+ink*q[3]+127)/255);}}
+ memcpy(icons52[at].id,id,16);atomic_store_explicit(&icons52_count,at+1,memory_order_release);log_line("AUTO58 id=%u_%u_%u_%u slot=%u symbol=%u ink=%u (custom exports take precedence; stable ID hash)",id[0],id[1],id[2],id[3],slot,symbol,ink);}
+static void auto58_sync(void){Seen snapshot[4096];size_t n;AcquireSRWLockShared(&known_lock);n=known_count;memcpy(snapshot,known,n*sizeof(Seen));ReleaseSRWLockShared(&known_lock);uint32_t own[4];if(player58_get(own))auto58_one(own);for(size_t i=0;i<n;i++)auto58_one(snapshot[i].id);}

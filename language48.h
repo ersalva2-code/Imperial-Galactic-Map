@@ -1,0 +1,66 @@
+#ifndef IGM_LANGUAGE48_H
+#define IGM_LANGUAGE48_H
+#include <stdatomic.h>
+#include <string.h>
+static _Atomic int language48;
+static const char *const language48_names[]={"Español","English","Français","Deutsch","Italiano","Português"};
+static const char *const language48_table[][6]={
+{"Alianza propia sin identificar","Your alliance has not been identified","Votre alliance n’est pas identifiée","Eigene Allianz nicht identifiziert","La tua alleanza non è identificata","Sua aliança não foi identificada"},
+{"Sin captura disponible","No capture available","Aucune capture disponible","Keine Aufnahme verfügbar","Nessuna cattura disponibile","Nenhuma captura disponível"},
+{"Mi alianza: visible","My alliance: visible","Mon alliance : visible","Meine Allianz: sichtbar","La mia alleanza: visibile","Minha aliança: visível"},
+{"Mi alianza: oculta","My alliance: hidden","Mon alliance : masquée","Meine Allianz: ausgeblendet","La mia alleanza: nascosta","Minha aliança: oculta"},
+{"Otras alianzas: visibles","Other alliances: visible","Autres alliances : visibles","Andere Allianzen: sichtbar","Altre alleanze: visibili","Outras alianças: visíveis"},
+{"Otras alianzas: ocultas","Other alliances: hidden","Autres alliances : masquées","Andere Allianzen: ausgeblendet","Altre alleanze: nascoste","Outras alianças: ocultas"},
+
+{"Favorito y captura guardados.","Favourite and capture saved.","Favori et capture enregistrés.","Favorit und Aufnahme gespeichert.","Preferito e cattura salvati.","Favorito e captura guardados."},
+{"Favorito guardado; captura no disponible. Revisa captura_v050.log.","Favourite saved; capture unavailable. Check captura_v050.log.","Favori enregistré ; capture indisponible. Voir captura_v050.log.","Favorit gespeichert; Aufnahme nicht verfügbar. Siehe captura_v050.log.","Preferito salvato; cattura non disponibile. Vedi captura_v050.log.","Favorito guardado; captura indisponível. Consulta captura_v050.log."},
+
+{"CATÁLOGO","CATALOGUE","CATALOGUE","KATALOG","CATALOGO","CATÁLOGO"},
+{"FAVORITOS","FAVOURITES","FAVORIS","FAVORITEN","PREFERITI","FAVORITOS"},
+{"AJUSTES","SETTINGS","PARAMÈTRES","EINSTELLUNGEN","IMPOSTAZIONI","DEFINIÇÕES"},
+{"OPCIONES","OPTIONS","OPTIONS","OPTIONEN","OPZIONI","OPÇÕES"},
+{"Alianzas","Alliances","Alliances","Allianzen","Alleanze","Alianças"},
+{"Favoritos","Favourites","Favoris","Favoriten","Preferiti","Favoritos"},
+{"Ajustes","Settings","Paramètres","Einstellungen","Impostazioni","Definições"},
+{"Anterior","Previous","Précédent","Zurück","Precedente","Anterior"},
+{"Siguiente","Next","Suivant","Weiter","Successivo","Seguinte"},
+{"Nombre pendiente","Name pending","Nom en attente","Name ausstehend","Nome in attesa","Nome pendente"},
+{"Galaxia %u","Galaxy %u","Galaxie %u","Galaxie %u","Galassia %u","Galáxia %u"},
+{"Planeta %u","Planet %u","Planète %u","Planet %u","Pianeta %u","Planeta %u"},
+{"Favorito","Favourite","Favori","Favorit","Preferito","Favorito"},
+{"%zu sistemas conocidos","%zu known systems","%zu systèmes connus","%zu bekannte Systeme","%zu sistemi conosciuti","%zu sistemas conhecidos"},
+{"Sin alianzas observadas","No observed alliances","Aucune alliance observée","Keine beobachteten Allianzen","Nessuna alleanza osservata","Nenhuma aliança observada"},
+{"No hay sistemas visibles en esta alianza.","No visible systems in this alliance.","Aucun système visible dans cette alliance.","Keine sichtbaren Systeme dieser Allianz.","Nessun sistema visibile in questa alleanza.","Nenhum sistema visível nesta aliança."},
+{"Sistema favorito","Favourite system","Système favori","Bevorzugtes System","Sistema preferito","Sistema favorito"},
+{"Todavía no has guardado favoritos.","You have not saved any favourites yet.","Vous n'avez pas encore de favoris.","Noch keine Favoriten gespeichert.","Non hai ancora salvato preferiti.","Ainda não guardaste favoritos."},
+{"Visibilidad de marcadores","Marker visibility","Visibilité des marqueurs","Sichtbarkeit der Markierungen","Visibilità indicatori","Visibilidade dos marcadores"},
+{"Entradas eliminadas","Deleted entries","Entrées supprimées","Gelöschte Einträge","Voci eliminate","Entradas eliminadas"},
+{"Visibilidad en el mapa","Map visibility","Visibilité sur la carte","Sichtbarkeit auf der Karte","Visibilità sulla mappa","Visibilidade no mapa"},
+{"Mostrar todos","Show all","Tout afficher","Alle anzeigen","Mostra tutti","Mostrar todos"},
+{"Solo mi alianza","My alliance only","Mon alliance uniquement","Nur meine Allianz","Solo la mia alleanza","Apenas minha aliança"},
+{"Solo otras alianzas","Other alliances only","Autres alliances uniquement","Nur andere Allianzen","Solo altre alleanze","Apenas outras alianças"},
+{"Ocultar todos","Hide all","Tout masquer","Alle ausblenden","Nascondi tutti","Ocultar todos"},
+{"Sistemas piratas: visibles","Pirate systems: visible","Systèmes pirates : visibles","Piratensysteme: sichtbar","Sistemi pirata: visibili","Sistemas piratas: visíveis"},
+{"Sistemas piratas: ocultos","Pirate systems: hidden","Systèmes pirates : masqués","Piratensysteme: ausgeblendet","Sistemi pirata: nascosti","Sistemas piratas: ocultos"},
+{"Restaurar sistemas","Restore systems","Restaurer les systèmes","Systeme wiederherstellen","Ripristina sistemi","Restaurar sistemas"},
+{"No hay entradas eliminadas.","No deleted entries.","Aucune entrée supprimée.","Keine gelöschten Einträge.","Nessuna voce eliminata.","Nenhuma entrada eliminada."},
+{"Restaurar este sistema","Restore this system","Restaurer ce système","Dieses System wiederherstellen","Ripristina questo sistema","Restaurar este sistema"},
+{"Quitar de favoritos","Remove from favourites","Retirer des favoris","Aus Favoriten entfernen","Rimuovi dai preferiti","Remover dos favoritos"},
+{"Añadir a favoritos","Add to favourites","Ajouter aux favoris","Zu Favoriten hinzufügen","Aggiungi ai preferiti","Adicionar aos favoritos"},
+{"Eliminar del catálogo","Remove from catalogue","Supprimer du catalogue","Aus Katalog entfernen","Elimina dal catalogo","Eliminar do catálogo"},
+{"Volver a Opciones","Back to Options","Retour aux options","Zurück zu Optionen","Torna alle opzioni","Voltar às opções"},
+{"¿Eliminar este sistema del catálogo?","Remove this system from the catalogue?","Supprimer ce système du catalogue ?","Dieses System aus dem Katalog entfernen?","Eliminare questo sistema dal catalogo?","Eliminar este sistema do catálogo?"},
+{"Podrás recuperarlo desde Ajustes / Entradas eliminadas.","Restore it in Settings / Deleted entries.","Restaurez-le dans Paramètres / Entrées supprimées.","Wiederherstellen unter Einstellungen / Gelöschte Einträge.","Ripristinalo da Impostazioni / Voci eliminate.","Restaura em Definições / Entradas eliminadas."},
+{"Cancelar","Cancel","Annuler","Abbrechen","Annulla","Cancelar"},
+{"Confirmar eliminación","Confirm removal","Confirmer la suppression","Entfernen bestätigen","Conferma eliminazione","Confirmar eliminação"},
+{"Añadir ubicación actual a favoritos (F8)","Add current location to favourites (F8)","Ajouter le lieu actuel aux favoris (F8)","Aktuellen Ort als Favorit speichern (F8)","Aggiungi posizione attuale ai preferiti (F8)","Adicionar localização atual aos favoritos (F8)"},
+{"S I S T E M A S   C O N O C I D O S","K N O W N   S Y S T E M S","S Y S T È M E S   C O N N U S","B E K A N N T E   S Y S T E M E","S I S T E M I   C O N O S C I U T I","S I S T E M A S   C O N H E C I D O S"},
+{"No se pudo guardar el cambio. Revisa el registro del mod.","Could not save the change. Check the mod log.","Échec de sauvegarde. Consultez le journal du mod.","Änderung nicht gespeichert. Mod-Protokoll prüfen.","Impossibile salvare. Controlla il registro del mod.","Não foi possível guardar. Consulta o registo do mod."},
+{"Idioma del mod","Mod language","Langue du mod","Mod-Sprache","Lingua del mod","Idioma do mod"},
+{"No se pudo confirmar la ubicación. Inténtalo de nuevo.","Could not confirm the location. Try again.","Position non confirmée. Réessayez.","Ort nicht bestätigt. Erneut versuchen.","Posizione non confermata. Riprova.","Localização não confirmada. Tenta novamente."},
+{"Favorito añadido: %s","Favourite added: %s","Favori ajouté : %s","Favorit hinzugefügt: %s","Preferito aggiunto: %s","Favorito adicionado: %s"},
+{"planeta (nombre pendiente)","planet (name pending)","planète (nom en attente)","Planet (Name ausstehend)","pianeta (nome in attesa)","planeta (nome pendente)"},
+{"sistema (nombre pendiente)","system (name pending)","système (nom en attente)","System (Name ausstehend)","sistema (nome in attesa)","sistema (nome pendente)"},
+{"No se pudo guardar el favorito. Revisa el registro.","Could not save favourite. Check the log.","Favori non enregistré. Consultez le journal.","Favorit nicht gespeichert. Protokoll prüfen.","Preferito non salvato. Controlla il registro.","Favorito não guardado. Consulta o registo."}};
+static const char *tr48(const char *s){int l=atomic_load(&language48);if(l<0||l>5)l=0;for(unsigned i=0;i<sizeof(language48_table)/sizeof(language48_table[0]);i++)if(!strcmp(s,language48_table[i][0]))return language48_table[i][l];return s;}
+#endif

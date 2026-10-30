@@ -1,0 +1,4 @@
+#include <assert.h>
+#include "icon52_format.h"
+static unsigned char pixels[ICON52_BYTES];
+int main(int argc,char**argv){FILE*f=tmpfile();assert(f);fputs("IGMICON2 1 96\n0 0 96 77331155\n",f);rewind(f);assert(icon52_legacy(f,pixels));assert(pixels[0]==17&&pixels[1]==51&&pixels[2]==119&&pixels[3]==85);assert(pixels[179*4+3]==85&&pixels[180*2*4+3]==0);fclose(f);f=tmpfile();fputs("IGMICON2 1 96\n95 0 2 ff0000ff\n",f);rewind(f);assert(!icon52_legacy(f,pixels));fclose(f);if(argc==2){f=fopen(argv[1],"rb");assert(f&&icon52_bmp(f,pixels));fclose(f);assert(pixels[0]==17&&pixels[1]==51&&pixels[2]==119&&pixels[3]==255&&pixels[7]==85);assert(pixels[(90*180+90)*4+3]==0);}puts("PASS icon parser: BGRA/alpha, legacy exact colour, transparent canvas, bad bounds refused, Companion BMP roundtrip when provided");}
